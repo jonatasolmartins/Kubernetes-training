@@ -10,15 +10,14 @@
 - [Deployment](#deployment)
   - Create a deployment for our pod
 - [The Get Command](#get-command)
+  - List all cluster resources using the get command
 - [Bonus tricks](#bonus-commands)
   - Call a pod from another pod using curl
 - [K3d commands](#k3d-commands)
   - Working with k3d Kubernetes
 
-
-
 ## Dashboard
-To use Kubernete dashboard:
+#### To use Kubernete dashboard:
 
     kubectl apply -f https://raw.githubusercontent.com/kubernetes/dashboard/v2.7.0/aio/deploy/recommended.yaml
     kubectl apply -f dashboard-adminuser.yml  
@@ -41,25 +40,25 @@ To use Kubernete dashboard:
     kubectl exec nginx-pod -c my-nginx -i -t -- sh
   
 ## Deployment
-  Use this:
+  #### Use this:
 
-    kubectl create -f nginx.deployment.yml --save-config
+    > kubectl create -f nginx.deployment.yml --save-config
 
-  Or use this:
+  #### Or use this:
 
-    kubectl apply -f nginx.deployment.yml
+    > kubectl apply -f nginx.deployment.yml
   
-  Scale the deployment pods
+  #### Scale the deployment pods
   
-    kubectl scale deployment my-deployment-name --replicas=5
+    > kubectl scale deployment my-deployment-name --replicas=5
 
-  Or 
+  #### Or 
 
-    kubectl scale -f nginx.deployment.yml --replicas=5
+    > kubectl scale -f nginx.deployment.yml --replicas=5
 
   ### Delete a deployment
 
-    kubectl delete -f nginx.deployment.yml
+    > kubectl delete -f nginx.deployment.yml
   
     
 ## Get Command
@@ -72,19 +71,19 @@ To use Kubernete dashboard:
     > kubectl describe nginx-pod
 
 ## Bonus Commands
- Enter the pod on interactive mode:
+ #### Enter the pod on interactive mode:
 
      > kubectl exec nginx-pod -c my-nginx -i -t -- sh
- on alpine, add curl if it's not present:
+ #### on alpine, add curl if it's not present:
 
      > apk add curl
 
- Get the PodIp or ServiceIp using the Kubectl get command
+ #### Get the PodIp or ServiceIp using the Kubectl get command
 
      > Kubectl get pods
      > Kubectl get services
 
- Them call the desired pod using it podIP, the serviceIp of the pod or the service name(this is the DNS name of the service)
+ #### Them call the desired pod using it podIP, the serviceIp of the pod or the service name(this is the DNS name of the service)
 
      > curl -s http://10.99.22.129
      > curl -s http://nginx-cluster:80
@@ -92,11 +91,14 @@ To use Kubernete dashboard:
 ## K3d Commands
 
   #### Get version and info
-     k3d info
-     k3d version
+     > k3d info
+     > k3d version
      
   #### Start the cluster
-     k3d cluster start dev-cluster
+     > k3d cluster start dev-cluster
+  
+  #### Stop the cluster
+     > k3d cluster stop dev-cluster
     
   #### Import local images to the cluster
-     k3d image import node-app:1.0 -c dev-cluster
+     > k3d image import node-app:1.0 -c dev-cluster
