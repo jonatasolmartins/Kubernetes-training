@@ -15,6 +15,7 @@ spec:
     spec:
       containers:
       - name: node-app
+        imagePullPolicy: Never
         image: node-app:1.0
         resources:
           requests:

@@ -16,6 +16,7 @@ spec:
       containers:
       - name: node-app
         image: node-app:4.0
+        imagePullPolicy: Never
         resources:
           requests:
             cpu: 100m

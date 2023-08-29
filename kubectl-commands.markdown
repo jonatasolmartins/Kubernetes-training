@@ -12,6 +12,9 @@
 - [The Get Command](#get-command)
 - [Bonus tricks](#bonus-commands)
   - Call a pod from another pod using curl
+- [K3d commands](#k3d-commands)
+  - Working with k3d Kubernetes
+
 
 
 ## Dashboard
@@ -85,3 +88,15 @@ To use Kubernete dashboard:
 
      > curl -s http://10.99.22.129
      > curl -s http://nginx-cluster:80
+
+## K3d Commands
+
+  #### Get version and info
+     k3d info
+     k3d version
+     
+  #### Start the cluster
+     k3d cluster start dev-cluster
+    
+  #### Import local images to the cluster
+     k3d image import node-app:1.0 -c dev-cluster
